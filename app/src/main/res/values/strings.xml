@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="button1">随机测试</string>
+    <string name="button2">全部测试</string>
+    <string name="button3">设置</string>
+    <string name="button4">退出</string>
 </resources>
