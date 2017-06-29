@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
     //随机测试跳转
     public void test(View view){
+        //获取网络数据
         OkHttpUtils<Examlnfo> utils= new OkHttpUtils<>(getApplicationContext());
         String url= "http://101.251.196.90:8080/JztkServer/examInfo";
         utils.url(url)

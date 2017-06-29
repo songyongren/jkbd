@@ -4,6 +4,6 @@
     <string name="button2">全部测试</string>
     <string name="button3">设置</string>
     <string name="button4">退出</string>
-    <string name="text">考试科目：c1\n</string>
+    <string name="text">考试科目：c1</string>
     <string name="timu">题目1</string>
 </resources>
