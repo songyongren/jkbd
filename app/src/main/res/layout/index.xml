@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
+        android:onClick="alltest"
         android:orientation="vertical"
         android:text="@string/button2" />
 
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_gravity="center"
+        android:onClick="settest"
         android:orientation="vertical"
         android:text="@string/button3" />
 
