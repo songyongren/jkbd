@@ -26,36 +26,111 @@ android:layout_height="match_parent">
             android:layout_gravity="center"
 
             />
-        <view
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            />
+
 
     </LinearLayout>
 <LinearLayout
     android:layout_width="wrap_content"
-    android:layout_height="170dp"
+    android:layout_height="10dp"
     android:orientation="vertical"
     android:layout_gravity="center">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:text="题目1"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/commit"
-        android:layout_gravity="center"
+        android:text="1."
         />
     <TextView
+        android:id="@+id/exam_title"
        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timu"
+
 
         />
 </LinearLayout>
+    <ImageView
+        android:id="@+id/im_exam_imge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A."
+            android:textColor="#000"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/tv_op1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B."
+            android:textColor="#000"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/tv_op2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C."
+            android:textColor="#000"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/tv_op3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D."
+            android:textColor="#000"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/tv_op4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="horizontal"
