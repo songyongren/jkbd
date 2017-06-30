@@ -10,7 +10,7 @@ import com.example.administrator.myapplication.R;
  * Created by Administrator on 2017/6/29.
  */
 
-public class setActivity extends AppCompatActivity{
+public class SetActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
