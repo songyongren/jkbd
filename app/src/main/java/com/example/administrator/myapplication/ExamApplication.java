@@ -29,6 +29,12 @@ public class ExamApplication extends Application{
     }
 
     private void initData() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
         OkHttpUtils<Examlnfo> utils= new OkHttpUtils<>(getApplicationContext());
         String url= "http://101.251.196.90:8080/JztkServer/examInfo";
         utils.url(url)
@@ -46,7 +52,8 @@ public class ExamApplication extends Application{
                         Log.e("main","error"+error);
                     }
                 });
-
+            }
+        }).start();
     }
 
     public Examlnfo getmExamInfo() {
