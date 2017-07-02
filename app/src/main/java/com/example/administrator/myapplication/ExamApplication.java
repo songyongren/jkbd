@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.administrator.myapplication.bean.Examlnfo;
 import com.example.administrator.myapplication.bean.*;
+import com.example.administrator.myapplication.biz.ExamBiz;
+import com.example.administrator.myapplication.biz.IExamBiz;
 import com.example.administrator.myapplication.utils.OkHttpUtils;
 import com.example.administrator.myapplication.utils.ResultUtils;
 
@@ -18,11 +20,12 @@ public class ExamApplication extends Application{
     Examlnfo mExamInfo;
     List<Question> mExamList;
     private static ExamApplication instance;
+    IExamBiz biz;
     @Override
     public void onCreate() {
         super.onCreate();
         instance =this;
-
+        biz=new ExamBiz();
         initData();
     }
     public static ExamApplication getInstance(){
@@ -35,10 +38,7 @@ public class ExamApplication extends Application{
         new Thread(new Runnable() {
             @Override
             public void run() {
-
-
-
-
+               biz.beginExam();
             }
         }).start();
     }
