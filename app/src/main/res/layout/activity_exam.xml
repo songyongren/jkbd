@@ -90,6 +90,7 @@ android:layout_height="match_parent">
         android:orientation="horizontal"
         android:layout_marginLeft="10dp">
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A."
@@ -109,6 +110,7 @@ android:layout_height="match_parent">
         android:orientation="horizontal"
         android:layout_marginLeft="10dp">
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="B."
@@ -123,6 +125,7 @@ android:layout_height="match_parent">
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout_03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -142,11 +145,13 @@ android:layout_height="match_parent">
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/layout_04"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp">
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D."
@@ -169,21 +174,25 @@ android:layout_height="match_parent">
         android:layout_marginTop="20dp"
         android:layout_gravity="center">
         <CheckBox
+            android:id="@+id/cb_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="A"/>
         <CheckBox
+            android:id="@+id/cb_02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="B"
             android:layout_marginLeft="20dp"/>
         <CheckBox
+            android:id="@+id/cb_03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="C"
             android:layout_marginLeft="20dp"/>
         <CheckBox
+            android:id="@+id/cb_04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D"
