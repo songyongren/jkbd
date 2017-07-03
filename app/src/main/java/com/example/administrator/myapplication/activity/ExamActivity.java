@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 public class ExamActivity extends AppCompatActivity{
-    TextView tvExamInfo,tvExamTitle,tvOp1,tvOp2,tvOp3,tvOp4,tvload;
+    TextView tvExamInfo,tvExamTitle,tvOp1,tvOp2,tvOp3,tvOp4,tvload,tvexamno;
     LinearLayout layoutLoading;
     ProgressBar dialog;
     ImageView mImageView;
@@ -76,6 +76,7 @@ public class ExamActivity extends AppCompatActivity{
         dialog = (ProgressBar) findViewById(R.id.load_dialog);
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tvExamTitle=(TextView)findViewById(R.id.exam_title);
+        tvexamno=(TextView)findViewById(R.id.tv_exam_no);
         tvOp1=(TextView)findViewById(R.id.tv_op1);
         tvOp2=(TextView)findViewById(R.id.tv_op2);
         tvOp3=(TextView)findViewById(R.id.tv_op3);
@@ -110,16 +111,23 @@ public class ExamActivity extends AppCompatActivity{
     }
 
     private void showExam(Question question) {
-
+        Log.e("showExam","showExam,exam="+question);
         if(question!=null){
+            tvexamno.setText(biz.getExamIndex());
             tvExamTitle.setText(question.getQuestion());
             tvOp1.setText(question.getItem1());
             tvOp2.setText(question.getItem2());
             tvOp3.setText(question.getItem3());
             tvOp4.setText(question.getItem4());
-            Picasso.with(ExamActivity.this)
-                    .load(question.getUrl())
-                    .into(mImageView);
+            if(question.getUrl()!=null && !question.getUrl().equals("")) {
+
+                mImageView.setVisibility(View.VISIBLE);
+                Picasso.with(ExamActivity.this)
+                        .load(question.getUrl())
+                        .into(mImageView);
+            }else{
+                mImageView.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -140,12 +148,14 @@ public class ExamActivity extends AppCompatActivity{
     }
 
     public void preExam(View view) {
-         showExam(biz.nextQuestion());
+         showExam(biz.preQuestion());
     }
 
     public void nextExam(View view) {
         showExam(biz.nextQuestion());
     }
+
+
 
     class LoadExamBroadcast extends BroadcastReceiver{
     @Override
