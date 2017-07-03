@@ -13,6 +13,7 @@ android:layout_height="match_parent">
         android:orientation="vertical"
         android:gravity="center">
         <ProgressBar
+            android:id="@+id/load_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -194,21 +195,25 @@ android:layout_height="match_parent">
         android:layout_height="100dp">
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:drawableRight="@drawable/exam_next32x32"
-            android:text="下一题" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:drawableRight="@drawable/exam_pre32x32"
             android:background="@null"
+            android:onClick="preExam"
             android:text="上一题" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:onClick="nextExam"
+            android:drawableRight="@drawable/exam_next32x32"
+            android:text="下一题" />
+
+
 
         <Button
 

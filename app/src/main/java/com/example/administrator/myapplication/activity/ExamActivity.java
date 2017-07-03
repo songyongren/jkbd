@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.ExamApplication;
@@ -30,7 +31,7 @@ import java.util.List;
 public class ExamActivity extends AppCompatActivity{
     TextView tvExamInfo,tvExamTitle,tvOp1,tvOp2,tvOp3,tvOp4,tvload;
     LinearLayout layoutLoading;
-
+    ProgressBar dialog;
     ImageView mImageView;
     IExamBiz biz;
     boolean isLoadExamInfo = false;
@@ -49,6 +50,7 @@ public class ExamActivity extends AppCompatActivity{
         mLoadQuestionBroadcast = new LoadQuestionBroadcast();
         setListener();
         initView();
+        biz=new ExamBiz();
         loadData();
     }
 
@@ -58,7 +60,9 @@ public class ExamActivity extends AppCompatActivity{
     }
 
     private void loadData() {
-        biz=new ExamBiz();
+        layoutLoading.setEnabled(false);
+        dialog.setVisibility(View.VISIBLE);
+        tvload.setText("下载数据...");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -69,6 +73,7 @@ public class ExamActivity extends AppCompatActivity{
 
     private void initView() {
         layoutLoading = (LinearLayout) findViewById(R.id.layout_loading);
+        dialog = (ProgressBar) findViewById(R.id.load_dialog);
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tvExamTitle=(TextView)findViewById(R.id.exam_title);
         tvOp1=(TextView)findViewById(R.id.tv_op1);
@@ -77,6 +82,13 @@ public class ExamActivity extends AppCompatActivity{
         tvOp4=(TextView)findViewById(R.id.tv_op4);
         tvload=(TextView)findViewById(R.id.tv_load);
         mImageView=(ImageView)findViewById(R.id.im_exam_imge);
+        layoutLoading.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                loadData();
+            }
+        });
     }
 
     private void initData(){
@@ -92,6 +104,8 @@ public class ExamActivity extends AppCompatActivity{
                     showExam(Queslist);
                 }
             }else{
+                    layoutLoading.setEnabled(true);
+                    dialog.setVisibility(View.GONE);
                     tvload.setText("下载失败，点击重试！");
             }
         }

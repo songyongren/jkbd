@@ -9,6 +9,7 @@ import com.example.administrator.myapplication.dao.IExamDao;
 
 public class ExamBiz implements IExamBiz{
     IExamDao dao;
+    int examIndex = 0;
 
     public ExamBiz() {
         this.dao = new ExamDao();
@@ -16,8 +17,10 @@ public class ExamBiz implements IExamBiz{
 
     @Override
     public void beginExam() {
+        examIndex=0;
          dao.loadExamInfo();
          dao.loadQuestionLists();
+
     }
 
     @Override
