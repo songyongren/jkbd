@@ -2,9 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F066">
+    android:background="@drawable/main01">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="90dp"
+    android:layout_marginLeft="70dp"
+    >
     <Button
         android:id="@+id/button7"
         android:layout_width="100dp"
@@ -13,7 +19,8 @@
         android:onClick="test"
         android:gravity="center"
         android:text="@string/button1"
-
+        android:layout_marginTop="100dp"
+        android:background="@drawable/main_menu_result"
         />
 
     <Button
@@ -24,7 +31,9 @@
         android:layout_gravity="center"
         android:onClick="alltest"
         android:orientation="vertical"
-        android:text="@string/button2" />
+        android:text="@string/button2"
+        android:background="@drawable/main_menu_exam"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/button9"
@@ -34,7 +43,9 @@
         android:layout_gravity="center"
         android:onClick="settest"
         android:orientation="vertical"
-        android:text="@string/button3" />
+        android:text="@string/button3"
+        android:background="@drawable/main_menu_message"
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/button10"
@@ -43,5 +54,8 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:text="@string/button4" />
+        android:text="@string/button4"
+        android:background="@drawable/main_menu_exit"
+        android:layout_marginTop="80dp"/>
+</LinearLayout>
 </LinearLayout>
