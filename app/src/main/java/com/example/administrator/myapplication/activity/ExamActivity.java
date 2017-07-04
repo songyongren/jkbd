@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,6 +25,7 @@ import com.example.administrator.myapplication.bean.Examlnfo;
 import com.example.administrator.myapplication.bean.Question;
 import com.example.administrator.myapplication.biz.ExamBiz;
 import com.example.administrator.myapplication.biz.IExamBiz;
+import com.example.administrator.myapplication.view.QuestionAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,8 +43,10 @@ public class ExamActivity extends AppCompatActivity{
     CheckBox[] cbs = new CheckBox[4];
     LinearLayout layoutLoading,layout03,layout04;
     ProgressBar dialog;
+    Gallery mGallery;
     ImageView mImageView;
     IExamBiz biz;
+    QuestionAdapter mAdapter;
     boolean isLoadExamInfo = false;
     boolean isLoadQuestions = false;
 
@@ -97,6 +101,7 @@ public class ExamActivity extends AppCompatActivity{
         cb03 = (CheckBox) findViewById(R.id.cb_03);
         cb04 = (CheckBox) findViewById(R.id.cb_04);
         tvTime= (TextView) findViewById(R.id.tv_Time);
+        mGallery= (Gallery) findViewById(R.id.gallery);
         cbs[0] = cb01;
         cbs[1] = cb02;
         cbs[2] = cb03;
@@ -154,6 +159,7 @@ public class ExamActivity extends AppCompatActivity{
                     showData(examInfo);
                     initTimer(examInfo);
                 }
+                    initGallery();
                     showExam(biz.getExam());
             }else{
                     layoutLoading.setEnabled(true);
@@ -161,6 +167,11 @@ public class ExamActivity extends AppCompatActivity{
                     tvload.setText("下载失败，点击重试！");
             }
         }
+    }
+
+    private void initGallery() {
+     mAdapter = new QuestionAdapter(this);
+        mGallery.setAdapter(mAdapter);
     }
 
     private void initTimer(Examlnfo exanInfo) {

@@ -205,7 +205,13 @@ android:layout_height="match_parent">
             android:text="D"
             android:layout_marginLeft="20dp"/>
     </LinearLayout>
+<Gallery
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/gallery"
+    android:spacing="10dp">
 
+</Gallery>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginTop="15dp"

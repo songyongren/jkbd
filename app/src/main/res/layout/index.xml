@@ -55,6 +55,7 @@
         android:layout_gravity="center"
         android:orientation="vertical"
         android:text="@string/button4"
+        android:onClick="exit"
         android:background="@drawable/main_menu_exit"
         android:layout_marginTop="80dp"/>
 </LinearLayout>

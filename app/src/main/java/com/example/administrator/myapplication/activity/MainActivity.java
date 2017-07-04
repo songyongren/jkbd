@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
     public void settest(View view){
         startActivity(new Intent(MainActivity.this,AllexamActivity.class));
     }
+    //退出
     public void exit(View view){
+        System.exit(0);
         finish();
     }
 
