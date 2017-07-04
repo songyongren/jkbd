@@ -114,28 +114,30 @@ public class ExamActivity extends AppCompatActivity{
         CompoundButton.OnCheckedChangeListener listener =new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-              int userAnswer = 0;
-                 switch (buttonView.getId()){
-                     case R.id.cb_01:
-                         userAnswer=1;
-                         break;
-                     case R.id.cb_02:
-                         userAnswer=2;
-                         break;
-                     case R.id.cb_03:
-                         userAnswer=3;
-                         break;
-                     case R.id.cb_04:
-                         userAnswer=4;
-                         break;
-                 }
-                 Log.e("checkedChanged","usera="+userAnswer+"idChecked="+isChecked);
-                 if(userAnswer>0){
-                       for(CheckBox cb : cbs){
-                           cb.setChecked(false);
-                       }
-                       cbs[userAnswer-1].setChecked(true);
-                 }
+                if(isChecked) {
+                    int userAnswer = 0;
+                    switch (buttonView.getId()) {
+                        case R.id.cb_01:
+                            userAnswer = 1;
+                            break;
+                        case R.id.cb_02:
+                            userAnswer = 2;
+                            break;
+                        case R.id.cb_03:
+                            userAnswer = 3;
+                            break;
+                        case R.id.cb_04:
+                            userAnswer = 4;
+                            break;
+                    }
+                    Log.e("checkedChanged", "usera=" + userAnswer + "idChecked=" + isChecked);
+                    if (userAnswer > 0) {
+                        for (CheckBox cb : cbs) {
+                            cb.setChecked(false);
+                        }
+                        cbs[userAnswer - 1].setChecked(true);
+                    }
+                }
             }
         };
     private void initData(){
@@ -177,11 +179,32 @@ public class ExamActivity extends AppCompatActivity{
             }else{
                 mImageView.setVisibility(View.GONE);
             }
+            resetOptions();
+            String userAnswer = question.getUseranswer();
+            if(userAnswer!=null && !userAnswer.equals("")){
+                int userCB = Integer.parseInt(userAnswer)-1;
+                cbs[userCB].setChecked(true);
+            }
+        }
+    }
+
+    private void resetOptions() {
+        for(CheckBox cb:cbs){
+            cb.setChecked(false);
+        }
+    }
+
+    private  void saveUserAnwer(){
+
+        for(int i=0;i<cbs.length;i++){
+           if( cbs[i].isChecked()){
+               biz.getExam().setUseranswer(String.valueOf(i+1));
+               return;
+           }
         }
     }
 
     private void showData(Examlnfo examInfo) {
-
         tvExamInfo.setText(examInfo.toString());
     }
 
@@ -197,10 +220,12 @@ public class ExamActivity extends AppCompatActivity{
     }
 
     public void preExam(View view) {
-         showExam(biz.preQuestion());
+        saveUserAnwer();
+        showExam(biz.preQuestion());
     }
 
     public void nextExam(View view) {
+        saveUserAnwer();
         showExam(biz.nextQuestion());
     }
 
