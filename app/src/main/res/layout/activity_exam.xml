@@ -230,6 +230,7 @@ android:layout_height="match_parent">
             android:layout_centerHorizontal="true"
             android:background="@null"
             android:drawableRight="@drawable/exam_commit32x32"
+            android:onClick="commit"
             android:text="交卷" />
     </RelativeLayout>
 </LinearLayout>

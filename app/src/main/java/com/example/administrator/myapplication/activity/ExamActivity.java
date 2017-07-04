@@ -2,9 +2,11 @@ package com.example.administrator.myapplication.activity;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
@@ -229,6 +231,26 @@ public class ExamActivity extends AppCompatActivity{
         showExam(biz.nextQuestion());
     }
 
+    public void commit(View view) {
+        saveUserAnwer();
+        int s = biz.commitExam();
+        View inflate = View.inflate(this,R.layout.layout_result,null);
+        TextView tvResult = inflate.findViewById(R.id.tv_result);
+        tvResult.setText("你的分数为\n"+s+"分！");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setIcon(R.drawable.exam_commit32x32)
+                .setTitle("交卷")
+                .setView(inflate)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+
+
+        builder.create().show();
+    }
 
 
     class LoadExamBroadcast extends BroadcastReceiver{
