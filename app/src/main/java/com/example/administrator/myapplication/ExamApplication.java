@@ -28,11 +28,8 @@ public class ExamApplication extends Application{
     public void onCreate() {
         super.onCreate();
         instance =this;
-
-
     }
     public static ExamApplication getInstance(){
-
         return instance;
     }
 

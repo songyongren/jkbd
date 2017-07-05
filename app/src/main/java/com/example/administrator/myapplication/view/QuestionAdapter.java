@@ -19,9 +19,9 @@ import java.util.List;
 
 public class QuestionAdapter extends BaseAdapter{
     Context mContext;
-   List<Question> examList;
-    public QuestionAdapter(Context mContext) {
-        mContext = mContext;
+    List<Question> examList;
+    public QuestionAdapter(Context context) {
+        mContext = context;
        examList= ExamApplication.getInstance().getmExamList();
     }
 
