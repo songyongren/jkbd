@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Gallery;
@@ -54,6 +55,7 @@ public class ExamActivity extends AppCompatActivity{
     boolean isLoadQuestionsReceiver = false;
     LoadExamBroadcast mLoadExamBroadcast;
     LoadQuestionBroadcast mLoadQuestionBroadcast;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +111,6 @@ public class ExamActivity extends AppCompatActivity{
         tvload=(TextView)findViewById(R.id.tv_load);
         mImageView=(ImageView)findViewById(R.id.im_exam_imge);
         layoutLoading.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 loadData();
@@ -120,7 +121,7 @@ public class ExamActivity extends AppCompatActivity{
         cb03.setOnCheckedChangeListener(listener);
         cb04.setOnCheckedChangeListener(listener);
     }
-
+        //选择答案
         CompoundButton.OnCheckedChangeListener listener =new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -140,7 +141,7 @@ public class ExamActivity extends AppCompatActivity{
                             userAnswer = 4;
                             break;
                     }
-                    Log.e("checkedChanged", "usera=" + userAnswer + "idChecked=" + isChecked);
+
                     if (userAnswer > 0) {
                         for (CheckBox cb : cbs) {
                             cb.setChecked(false);
@@ -168,15 +169,21 @@ public class ExamActivity extends AppCompatActivity{
             }
         }
     }
-
+    //滚动条
     private void initGallery() {
-     mAdapter = new QuestionAdapter(this);
+        mAdapter = new QuestionAdapter(this);
         mGallery.setAdapter(mAdapter);
+        mGallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                saveUserAnwer();
+                showExam(biz.getExam(i));
+            }
+        });
     }
-
+    //计分
     private void initTimer(Examlnfo exanInfo) {
         int sumTime=exanInfo.getLimitTime()*60*1000;
-
         final long overTime = sumTime+ System.currentTimeMillis();
         final Timer time=new Timer();
         time.schedule(new TimerTask() {
@@ -244,13 +251,15 @@ public class ExamActivity extends AppCompatActivity{
     }
 
     private  void saveUserAnwer(){
-
         for(int i=0;i<cbs.length;i++){
-           if( cbs[i].isChecked()){
+           if(cbs[i].isChecked()){
                biz.getExam().setUseranswer(String.valueOf(i+1));
+               mAdapter.notifyDataSetChanged();
                return;
            }
         }
+        biz.getExam().setUseranswer("");
+        mAdapter.notifyDataSetChanged();
     }
 
     private void showData(Examlnfo examInfo) {
@@ -277,7 +286,7 @@ public class ExamActivity extends AppCompatActivity{
         saveUserAnwer();
         showExam(biz.nextQuestion());
     }
-
+    //提交显示分数
     public void commit(View view) {
         saveUserAnwer();
         int s = biz.commitExam();
