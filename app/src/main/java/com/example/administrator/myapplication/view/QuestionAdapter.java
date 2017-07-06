@@ -43,11 +43,14 @@ public class QuestionAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = View.inflate(mContext, R.layout.exam_question,null);
-        TextView tvNo = view.findViewById(R.id.tv_no);
-        ImageView ivQuestion = view.findViewById(R.id.iv_question);
+        TextView tvNo = (TextView) view.findViewById(R.id.tv_no);
+        ImageView ivQuestion = (ImageView) view.findViewById(R.id.iv_question);
         String a = examList.get(position).getUseranswer();
+        String ra= examList.get(position).getAnswer();
         if(a!=null && !a.equals("")){
-            ivQuestion.setImageResource(R.drawable.answer24x24);
+
+            ivQuestion.setImageResource(a.equals(ra)?R.drawable.answer24x24:
+            R.drawable.error);
         }else{
             ivQuestion.setImageResource(R.drawable.ques24x24);
         }

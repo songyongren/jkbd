@@ -291,7 +291,7 @@ public class ExamActivity extends AppCompatActivity{
         saveUserAnwer();
         int s = biz.commitExam();
         View inflate = View.inflate(this,R.layout.layout_result,null);
-        TextView tvResult = inflate.findViewById(R.id.tv_result);
+        TextView tvResult = (TextView) inflate.findViewById(R.id.tv_result);
         tvResult.setText("你的分数为\n"+s+"分！");
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setIcon(R.drawable.exam_commit32x32)
@@ -303,11 +303,8 @@ public class ExamActivity extends AppCompatActivity{
                         finish();
                     }
                 });
-
-
         builder.create().show();
     }
-
 
     class LoadExamBroadcast extends BroadcastReceiver{
     @Override
