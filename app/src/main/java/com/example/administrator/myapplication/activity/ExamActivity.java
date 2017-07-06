@@ -295,8 +295,27 @@ public class ExamActivity extends AppCompatActivity{
         saveUserAnwer();
         showExam(biz.nextQuestion());
     }
-    //提交显示分数
     public void commit(View view) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("交卷")
+                .setMessage("还有剩余时间，是否确认交卷？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commit();
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder.create().show();
+    }
+
+    //提交显示分数
+    public void commit() {
         saveUserAnwer();
         int s = biz.commitExam();
         View inflate = View.inflate(this,R.layout.layout_result,null);
@@ -312,6 +331,7 @@ public class ExamActivity extends AppCompatActivity{
                         finish();
                     }
                 });
+        builder.setCancelable(false);
         builder.create().show();
     }
 
