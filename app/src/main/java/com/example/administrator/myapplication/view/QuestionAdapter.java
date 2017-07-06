@@ -48,7 +48,6 @@ public class QuestionAdapter extends BaseAdapter{
         String a = examList.get(position).getUseranswer();
         String ra= examList.get(position).getAnswer();
         if(a!=null && !a.equals("")){
-
             ivQuestion.setImageResource(a.equals(ra)?R.drawable.answer24x24:
             R.drawable.error);
         }else{
